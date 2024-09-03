@@ -102,7 +102,7 @@ jobs:
       # Random sleep and retry to limit the load on trac.sagemath.org
       run: |
         git init && git remote add trac ${{ env.SAGE_TRAC_GIT }} && x=1 && while [ $x -le 5 ]; do x=$(( $x + 1 )); sleep $(( $RANDOM % 60 + 1 )); if git-trac-command/git-trac checkout $SAGE_TICKET; then exit 0; fi; sleep 40; done; exit 1
-    - uses: actions/download-artifact@v2
+    - uses: actions/download-artifact@v4.1.7
       with:
         path: upstream
         name: upstream
@@ -191,7 +191,7 @@ jobs:
         shell: bash {0}
         run: |
           git init && git remote add trac ${{ env.SAGE_TRAC_GIT }} && x=1 && while [ $x -le 5 ]; do x=$(( $x + 1 )); sleep $(( $RANDOM % 60 + 1 )); if git-trac-command/git-trac checkout $SAGE_TICKET; then exit 0; fi; sleep 40; done; exit 1
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4.1.7
         with:
           path: upstream
           name: upstream
